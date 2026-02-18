@@ -1,0 +1,27 @@
+body{
+	background-color: rgb(202, 221, 118);
+}
+#total-orders{
+	font-size: 1.5rem;
+	font-weight: bold;
+	color: #007bff;
+	background-color: blue;
+}
+#orders-delivered{
+	font-size: 1.5rem;
+	font-weight: bold;
+	color: #28a745;
+	background-color: blueviolet;
+}
+#orders-pending{
+	font-size: 1.5rem;
+	font-weight: bold;
+	color: #ffc107;
+	background-color: rebeccapurple;
+}
+#out_for_delivery{
+	font-size: 1.5rem;
+	font-weight: bold;
+	color: #dc3545;
+	background-color: crimson;
+}
