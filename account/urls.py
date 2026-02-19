@@ -6,5 +6,6 @@ urlpatterns = [
     path('product/',views.Prod,name='product'),
     path('customer/',views.customer,name='customer'),
     path('customer/<str:pk_test>/',views.customer,name='customer_detail'),
+    path('create_order/',views.createOrder,name='create_order'),
     path('tag/',views.tag,name='tag'),
 ]
