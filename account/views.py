@@ -1,6 +1,6 @@
 from django.shortcuts import redirect, render 
 from .models import Customer, Order, Product, Tag 
-from .forms import OrderForm , CustomerForm
+from .forms import OrderForm , CustomerForm , ProductForm
 from django.forms import inlineformset_factory
 
 # Create your views here.
@@ -112,6 +112,17 @@ def delete_customer(request, pk):
         return redirect('customer_list')
     context = {'customer': customer}
     return render(request, 'account/delete_customer.html', context)
+
+
+def add_product(request):
+    form = ProductForm()
+    if request.method == 'POST':
+        form = ProductForm(request.POST , request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('product')
+    context = {'form': form}
+    return render(request, 'account/add_product.html', context)
 
 
 def tag(request):

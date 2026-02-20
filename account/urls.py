@@ -17,6 +17,10 @@ urlpatterns = [
     path('update_customer/<str:pk>/',views.update_customer,name='update_customer'),
     path('delete_customer/<str:pk>/',views.delete_customer,name='delete_customer'),
     path('place_order/<str:pk>/',views.placeOrder,name='place_order'),
+
+    # Product Operations
+    path('add_product/',views.add_product,name='add_product'),
+
     # Tag Operations
     path('tag/',views.tag,name='tag'),
 ]
