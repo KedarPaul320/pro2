@@ -1,6 +1,7 @@
 from django.shortcuts import redirect, render 
 from .models import Customer, Order, Product, Tag 
 from .forms import OrderForm , CustomerForm
+from django.forms import inlineformset_factory
 
 # Create your views here.
 def home(request):
@@ -63,6 +64,20 @@ def deleteOrder(request, pk):
         return redirect('/')
     context = {'item': order}
     return render(request, 'account/delete.html', context)
+
+
+# This section is for the customer place order form
+def placeOrder(request, pk):
+    customer = Customer.objects.get(id=pk)
+    orderformset = inlineformset_factory(Customer, Order, fields=('product', 'status'), extra=7)
+    formset = orderformset(queryset=Order.objects.none(), instance=customer)
+    if request.method == 'POST':
+        formset = orderformset(request.POST, instance=customer)
+        if formset.is_valid():
+            formset.save()
+            return redirect('home')
+    context = {'form': formset , 'customer': customer}
+    return render(request, 'account/place_order.html', context)
 
 def create_customer(request):
     form = CustomerForm()
