@@ -1,6 +1,6 @@
-from django.shortcuts import render , redirect
+from django.shortcuts import redirect, render 
 from .models import Customer, Order, Product, Tag 
-from .forms import OrderForm
+from .forms import OrderForm , CustomerForm
 
 # Create your views here.
 def home(request):
@@ -44,6 +44,60 @@ def createOrder(request):
             return redirect('/')
     context = {'form': form}
     return render(request, 'account/order_form.html', context)
+
+def updateOrder(request, pk):
+    order = Order.objects.get(id=pk)
+    form = OrderForm(instance=order)
+    if request.method == 'POST':
+        form = OrderForm(request.POST,instance=order)
+        if form.is_valid():
+            form.save()
+            return redirect('/')
+    context = {'form': form}
+    return render(request,'account/order_form.html',context)
+
+def deleteOrder(request, pk):
+    order = Order.objects.get(id=pk)
+    if request.method == 'POST':
+        order.delete()
+        return redirect('/')
+    context = {'item': order}
+    return render(request, 'account/delete.html', context)
+
+def create_customer(request):
+    form = CustomerForm()
+    if request.method == 'POST':
+        form = CustomerForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+    context = {'form': form}
+    return render(request, 'account/create_customer.html', context)
+
+def Customer_list(request):
+    customers = Customer.objects.all()
+    context = {'customers': customers}
+    return render(request, 'account/customer_list.html', context)
+
+def update_customer(request, pk):
+    customer = Customer.objects.get(id=pk)
+    form = CustomerForm(instance=customer)
+    if request.method == 'POST':
+        form = CustomerForm(request.POST,instance=customer)
+        if form.is_valid():
+            form.save()
+            return redirect('customer_detail', pk_test=pk)
+    context = {'form': form, 'customer': customer}
+    return render(request,'account/create_customer.html',context)
+
+def delete_customer(request, pk):
+    customer = Customer.objects.get(id=pk)
+    if request.method == 'POST':
+        customer.delete()
+        return redirect('customer_list')
+    context = {'customer': customer}
+    return render(request, 'account/delete_customer.html', context)
+
 
 def tag(request):
     tags = Tag.objects.all()
