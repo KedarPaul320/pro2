@@ -15,14 +15,28 @@
 						<tr>
 							<th>Product</th>
 							<th>Category</th>
+							<th>Description</th>
 							<th>Price</th>
+							<th>Image</th>
+							<th>Update</th>
+							<th>Delete</th>
 						</tr>
 
 						{% for i in product %}
 							<tr>
 								<td>{{i.name}}</td>
 								<td>{{i.category}}</td>
+								<td>{{i.description}}</td>
 								<td>{{i.price}}</td>
+								<td>
+									{% if i.pic %}
+										<img src="{{i.pic.url}}" width="50px">
+									{% else %}
+										<span class="text-muted">No Image</span>
+									{% endif %}
+								</td>
+								<td><a class="btn btn-sm btn-info" href="">Update</a></td>
+								<td><a class="btn btn-sm btn-danger" href="">Delete</a></td>
 							</tr>
 						{% endfor %}
 
