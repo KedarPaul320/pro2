@@ -99,8 +99,8 @@ def createcustomer(request):
 
 
 def Customer_list(request):
-    customer = Customer.objects.all()
-    context = {'customer'  : customer}
+    customers = Customer.objects.all()
+    context = {'customers': customers}
     return render(request,'account/customer_list.html',context)
 
 
@@ -134,6 +134,25 @@ def add_product(request):
             return redirect('product')
     context = {'form': form}
     return render(request, 'account/add_product.html', context)
+
+def update_product(request, pk):
+    product = Product.objects.get(id=pk)
+    form = ProductForm(instance=product)
+    if request.method == 'POST':
+        form = ProductForm(request.POST, request.FILES, instance=product)
+        if form.is_valid():
+            form.save()
+            return redirect('product')
+    context = {'form': form, 'product': product}
+    return render(request, 'account/add_product.html', context)
+
+def delete_product(request, pk):
+    product = Product.objects.get(id=pk)
+    if request.method == 'POST':
+        product.delete()
+        return redirect('product')
+    context = {'product': product}
+    return render(request, 'account/delete_product.html', context)
 
 
 def tag_list(request):

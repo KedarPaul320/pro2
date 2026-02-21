@@ -20,7 +20,8 @@ urlpatterns = [
 
     # Product Operations
     path('add_product/',views.add_product,name='add_product'),
-
+    path('update_product/<str:pk>/',views.update_product,name='update_product'),
+    path('delete_product/<str:pk>/',views.delete_product,name='delete_product'),
     # Tag Operations
     path('tag/',views.tag_list,name='tag'),
     path('import_tag/',views.importtag,name='import_tag'),
