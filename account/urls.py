@@ -4,6 +4,13 @@ from . import views
 urlpatterns = [
     # Dashboard and Product
     path('',views.home,name='home'),
+    path('order_list/',views.order_list,name='order_list'),
+    path('order_delivered/',views.order_delivered,name='order_delivered'),
+    path('order_pending/',views.order_pending,name='order_pending'),
+    path('order_out_for_delivery/',views.order_out_for_delivery,name='order_out_for_delivery'),
+
+
+    #Navbar Links
     path('product/',views.Prod,name='product'),
     path('customer/',views.customer,name='customer'),
     path('customer/<str:pk_test>/',views.customer,name='customer_detail'),
@@ -21,7 +28,8 @@ urlpatterns = [
     # Product Operations
     path('add_product/',views.add_product,name='add_product'),
     path('update_product/<str:pk>/',views.update_product,name='update_product'),
-    path('delete_product/<str:pk>/',views.delete_product,name='delete_product'),            
+    path('delete_product/<str:pk>/',views.delete_product,name='delete_product'),   
+             
     # Tag Operations
     path('tag/',views.tag_list,name='tag'),
     path('import_tag/',views.importtag,name='import_tag'),

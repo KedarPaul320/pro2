@@ -3,19 +3,24 @@
 <div class="row">
 	<div class="col">
 		<div class="col-md">
+			<a href="{% url 'order_list' %}" class="text-decoration-none ">
 			<div class="card text-center text-white  mb-3" id="total-orders">
 			  	<div class="card-header">
-			  		<h5 class="card-title">Total Orders</h5>
+					
+			  		<h5 class="card-title">  Total Orders</h5>
+
 			  	</div>
 			  	<div class="card-body">
 			    	<h3 class="card-title">{{total_orders}}</h3>
 			  	</div>
 			</div>
+			</a>
 		</div>
 	</div>
 
 	<div class="col">
 		<div class="col-md">
+			<a href="{% url 'order_delivered' %}" class="text-decoration-none ">
 			<div class="card text-center text-white  mb-3" id="orders-delivered">
 			  	<div class="card-header">
 			  		<h5 class="card-title">Orders Delivered</h5>
@@ -24,11 +29,13 @@
 			    	<h3 class="card-title">{{delivered}}</h3>
 			  	</div>
 			</div>
+			</a>
 		</div>
 	</div>
 
 	<div class="col">
 		<div class="col-md">
+			<a href="{% url 'order_pending' %}" class="text-decoration-none ">
 			<div class="card text-center text-white  mb-3" id="orders-pending">
 			  	<div class="card-header">
 			  		<h5 class="card-title">Orders Pending</h5>
@@ -37,11 +44,13 @@
 			    	<h3 class="card-title">{{pending}}</h3>
 			  	</div>
 			</div>
+			</a>
 		</div>
 	</div>
 
 	<div class="col">
 		<div class="col-md">
+			<a href="{% url 'order_out_for_delivery' %}" class="text-decoration-none ">
 			<div class="card text-center text-white  mb-3" id="out_for_delivery">
 			  	<div class="card-header">
 			  		<h5 class="card-title">Orders Out for Delivery</h5>
@@ -50,6 +59,7 @@
 			    	<h3 class="card-title">{{out_for_delivery}}</h3>
 			  	</div>
 			</div>
+			</a>
 		</div>
 	</div>
 </div>

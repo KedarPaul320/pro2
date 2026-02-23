@@ -6,22 +6,50 @@ body{
 	font-weight: bold;
 	color: #007bff;
 	background-color: blue;
+	transform: translateY(0);
+	transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+#total-orders:hover{
+	transform: translateY(-5px);
+	box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+	cursor: pointer;
 }
 #orders-delivered{
 	font-size: 1.5rem;
 	font-weight: bold;
 	color: #28a745;
 	background-color: blueviolet;
+	transform: translateY(0);
+	transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+#orders-delivered:hover{
+	transform: translateY(-5px);
+	box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+	cursor: pointer;
 }
 #orders-pending{
 	font-size: 1.5rem;
 	font-weight: bold;
 	color: #ffc107;
 	background-color: rebeccapurple;
+	transform: translateY(0);
+	transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+#orders-pending:hover{
+	transform: translateY(-5px);
+	box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+	cursor: pointer;
 }
 #out_for_delivery{
 	font-size: 1.5rem;
 	font-weight: bold;
 	color: #dc3545;
 	background-color: crimson;
+	transform: translateY(0);
+	transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+#out_for_delivery:hover{
+	transform: translateY(-5px);
+	box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+	cursor: pointer;
 }

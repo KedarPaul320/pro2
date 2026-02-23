@@ -5,6 +5,7 @@ from django.forms import inlineformset_factory
 import csv
 
 # Create your views here.
+# Dashboard view
 def home(request):
     orders = Order.objects.all()
     customers = Customer.objects.all()
@@ -18,6 +19,48 @@ def home(request):
                'customers': customers , 'orders': orders} 
     
     return render(request,'account/dashboard.html', context)  
+
+def createOrder(request):
+    form = OrderForm()
+    if request.method == 'POST':
+        form = OrderForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('/')
+    context = {'form': form}
+    return render(request, 'account/order_form.html', context)
+
+def createcustomer(request):
+    form = CustomerForm()
+    if request.method == 'POST':
+        form = CustomerForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+    context = {"form" : form}
+    return render(request , 'account/create_customer.html',context)
+
+def order_list(request):
+    orders = Order.objects.all()
+    context = {'orders': orders}
+    return render(request,'account/order_list.html',context)
+
+def order_delivered(request):
+    orders = Order.objects.filter(status='Delivered')
+    context = {'orders': orders, 'status_title': 'Delivered Orders'}
+    return render(request, 'account/order_list.html', context)
+
+def order_pending(request):
+    orders = Order.objects.filter(status='Pending')
+    context = {'orders': orders, 'status_title': 'Pending Orders'}
+    return render(request, 'account/order_list.html', context)
+
+def order_out_for_delivery(request):
+    orders = Order.objects.filter(status='Out for delivery')
+    context = {'orders': orders, 'status_title': 'Out for Delivery Orders'}
+    return render(request, 'account/order_list.html', context)
+
+############################################################################################################################################################
 
 
 def Prod(request):
@@ -41,15 +84,7 @@ def customer(request, pk_test=None):
     return render(request, 'account/customer.html', context)
 
 
-def createOrder(request):
-    form = OrderForm()
-    if request.method == 'POST':
-        form = OrderForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('/')
-    context = {'form': form}
-    return render(request, 'account/order_form.html', context)
+
 
 
 #this section is for customer place order
@@ -87,15 +122,7 @@ def deleteorder(request,pk):
     return render(request,'account/delete.html',cotext)
 
 
-def createcustomer(request):
-    form = CustomerForm()
-    if request.method == 'POST':
-        form = CustomerForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('home')
-    context = {"form" : form}
-    return render(request , 'account/create_customer.html',context)
+
 
 
 def Customer_list(request):
