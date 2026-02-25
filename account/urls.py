@@ -2,6 +2,14 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
+    # login and registration
+    path('registration/',views.registration,name='registration'),
+    path('login/',views.login_view,name='login'),
+    path('logout/',views.logout_view,name='logout'),
+
+
+
+
     # Dashboard and Product
     path('',views.home,name='home'),
     path('order_list/',views.order_list,name='order_list'),

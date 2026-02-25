@@ -1,0 +1,9 @@
+asgiref==3.11.1
+Django==6.0.2
+django-filter==25.2
+packaging @ file:///C:/miniconda3/conda-bld/packaging_1761049098810/work
+pillow==12.1.1
+setuptools==80.10.2
+sqlparse==0.5.5
+tzdata==2025.3
+wheel==0.46.3
